@@ -37,7 +37,7 @@ public class Service {
         }
         isCombinado = true;
       } catch (Exception e) {
-        throw new Exception("Existe mais caminhoes que clientes");
+        throw new Exception("Existe mais caminhoes que clientes, mas todas as combinações foram feitas.");
       }
     }
     return fretes;
