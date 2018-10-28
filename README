@@ -1,0 +1,7 @@
+Alunos: Marcelo Lubanco, Jenyffer, Rodrigo
+
+Deverá executar o comando java -jar logistica.jar
+
+Após isso será aberta uma box para inserir o caminho do input de dados.
+
+Os resultados serão armazenados no arquivo resultado.txt
