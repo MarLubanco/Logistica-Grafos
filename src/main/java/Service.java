@@ -20,21 +20,25 @@ public class Service {
     arquivo.close();
   }
 
-  public ArrayList<Frete> combinacoesFrete(ArrayList<Caminhao> caminhaos, ArrayList<Cliente> clientes) {
+  public ArrayList<Frete> combinacoesFrete(ArrayList<Caminhao> caminhaos, ArrayList<Cliente> clientes) throws Exception {
     boolean isCombinado =  true;
     ArrayList<Frete> fretes =  new ArrayList<>();
     for(int i=0; i < caminhaos.size();i++) {
-      for(int j=0; j < clientes.size(); j++) {
-        if(clientes.get(j).getQuantidade() <= caminhaos.get(i).getQuantidade()
-                && clientes.get(j).getValor() >= caminhaos.get(i).getValor()) {
-          if(isCombinado) {
-            fretes.add(new Frete(clientes.get(i), caminhaos.get(i)));
-            isCombinado = false;
+      try {
+        for (int j = 0; j < clientes.size(); j++) {
+          if (clientes.get(j).getQuantidade() <= caminhaos.get(i).getQuantidade()
+                  && clientes.get(j).getValor() >= caminhaos.get(i).getValor()) {
+            if (isCombinado) {
+              fretes.add(new Frete(clientes.get(i), caminhaos.get(i)));
+              isCombinado = false;
+            }
+          } else {
           }
-        } else {
         }
+        isCombinado = true;
+      } catch (Exception e) {
+        throw new Exception("Existe mais caminhoes que clientes");
       }
-      isCombinado = true;
     }
     return fretes;
   }

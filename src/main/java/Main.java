@@ -2,6 +2,7 @@ import model.Caminhao;
 import model.Cliente;
 import model.Frete;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,8 +16,8 @@ public class Main {
     ArrayList<Frete> fretes =  new ArrayList<>();
     ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     final ArrayList<Caminhao> caminhaos = new ArrayList<Caminhao>();
-//    String nome = JOptionPane.showInputDialog("Informe o caminho do arquivo");
-    FileReader arq = new FileReader("/home/surfista/Downloads/logistica/input.txt");
+    String nome = JOptionPane.showInputDialog("Informe o caminho do arquivo");
+    FileReader arq = new FileReader(nome);
     BufferedReader lerArq = new BufferedReader(arq);
     List<String> lista = new ArrayList<String>();
 
@@ -54,29 +55,10 @@ public class Main {
     }
 
     Collections.sort(caminhaos);
-
     Collections.sort(clientes);
 
     fretes = service.combinacoesFrete(caminhaos,clientes);
     service.gravarResultadoArquivo(fretes.size());
-//      for(int i=0; i < caminhaos.size();i++) {
-//        for(int j=0; j < clientes.size(); j++) {
-//        if(clientes.get(j).getQuantidade() <= caminhaos.get(i).getQuantidade()
-//                && clientes.get(j).getValor() >= caminhaos.get(i).getValor()) {
-//          if(isCombinado) {
-//            fretes.add(new Frete(clientes.get(i), caminhaos.get(i)));
-//            combinacoes.add(1);
-//            isCombinado = false;
-//          }
-//        } else {
-//          combinacoes.add(0);
-//        }
-//      }
-//      isCombinado = true;
-//    }
-
-
   }
-
 
 }
